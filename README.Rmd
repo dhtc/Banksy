@@ -46,25 +46,32 @@ details, check out:
 
 ## Installation
 
-The *Banksy* package can be installed via:
+The *Banksy* package can be installed via Bioconductor. This currently requires
+R `>= 4.4.0`. 
 
 ```{r, eval=F}
 BiocManager::install('Banksy')
 ```
 
-To install from GitHub, use
+To install directly from GitHub instead, use
 
 ```{r, eval=F}
 remotes::install_github("prabhakarlab/Banksy")
 ```
 
-*Banksy* is also interoperable with [Seurat](https://satijalab.org/seurat/) via 
-*SeuratWrappers*. Documentation on how to run BANKSY on Seurat objects can be 
-found [here](https://github.com/jleechung/seurat-wrappers/blob/feat-aft/docs/banksy.md). 
+To use the legacy version of *Banksy* utilising the `BanksyObject` class, use
+
+```{r, eval=F}
+remotes::install_github("prabhakarlab/Banksy@main")
+```
+
+*Banksy* is also interoperable with [*Seurat*](https://satijalab.org/seurat/) 
+via [*SeuratWrappers*](https://github.com/satijalab/seurat-wrappers). 
+Documentation on how to run BANKSY on Seurat objects can be found [here](https://github.com/satijalab/seurat-wrappers/blob/master/docs/banksy.md). 
 For installation of *SeuratWrappers* with BANKSY version `>= 0.1.6`, run
 
 ```{r, eval=F}
-remotes::install_github('jleechung/seurat-wrappers@feat-aft')
+remotes::install_github('satijalab/seurat-wrappers')
 ```
 
 ## Quick start

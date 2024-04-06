@@ -34,26 +34,35 @@ datasets. For more details, check out:
 
 ## Installation
 
-The *Banksy* package can be installed via:
+The *Banksy* package can be installed via Bioconductor. This currently
+requires R `>= 4.4.0`.
 
 ``` r
 BiocManager::install('Banksy')
 ```
 
-To install from GitHub, use
+To install directly from GitHub instead, use
 
 ``` r
 remotes::install_github("prabhakarlab/Banksy")
 ```
 
+To use the legacy version of *Banksy* utilising the `BanksyObject`
+class, use
+
+``` r
+remotes::install_github("prabhakarlab/Banksy@main")
+```
+
 *Banksy* is also interoperable with
-[Seurat](https://satijalab.org/seurat/) via *SeuratWrappers*.
+[*Seurat*](https://satijalab.org/seurat/) via
+[*SeuratWrappers*](https://github.com/satijalab/seurat-wrappers).
 Documentation on how to run BANKSY on Seurat objects can be found
-[here](https://github.com/jleechung/seurat-wrappers/blob/feat-aft/docs/banksy.md).
+[here](https://github.com/satijalab/seurat-wrappers/blob/master/docs/banksy.md).
 For installation of *SeuratWrappers* with BANKSY version `>= 0.1.6`, run
 
 ``` r
-remotes::install_github('jleechung/seurat-wrappers@feat-aft')
+remotes::install_github('satijalab/seurat-wrappers')
 ```
 
 ## Quick start
@@ -171,7 +180,7 @@ plot_bank <- plotColData(se,
 plot_grid(plot_nsp + coord_equal(), plot_bank + coord_equal(), ncol = 2)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
 For clarity, we can visualise each of the clusters separately:
 
@@ -183,7 +192,7 @@ plot_grid(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
 
 Visualize UMAPs of the non-spatial and BANKSY embedding:
 
@@ -205,14 +214,14 @@ plot_grid(
 )
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
 
 <details>
 <summary>
 Runtime for analysis
 </summary>
 
-    #> Time difference of 1.312978 mins
+    #> Time difference of 57.72235 secs
 
 </details>
 <details>
@@ -231,7 +240,7 @@ sessionInfo()
 #> LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 #> 
 #> locale:
-#> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#> [1] C/en_US.UTF-8/C/C/C/C
 #> 
 #> time zone: Europe/London
 #> tzcode source: internal
@@ -248,7 +257,7 @@ sessionInfo()
 #>  [9] GenomicRanges_1.54.1        GenomeInfoDb_1.38.6        
 #> [11] IRanges_2.36.0              S4Vectors_0.40.2           
 #> [13] BiocGenerics_0.48.1         MatrixGenerics_1.14.0      
-#> [15] matrixStats_1.2.0           Banksy_0.99.7              
+#> [15] matrixStats_1.2.0           Banksy_0.99.9              
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] tidyselect_1.2.0          viridisLite_0.4.2        

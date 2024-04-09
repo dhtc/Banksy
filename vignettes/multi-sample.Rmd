@@ -36,7 +36,6 @@ library(Seurat)
 library(scater)
 library(cowplot)
 library(ggplot2)
-library(ggspavis)
 ```
 
 # Loading the data
@@ -217,7 +216,7 @@ nmi
 Visualise pathology annotation and BANKSY cluster on spatial coordinates with 
 the [*ggspavis*](https://bioconductor.org/packages/ggspavis) package:
 
-```{r multi-sample-spatial, eval=TRUE, fig.height=5, out.width='90%'}
+```{r multi-sample-spatial, eval=TRUE, fig.height=4, out.width='90%'}
 # Use scater:::.get_palette('tableau10medium')
 pal <- c(
     "#729ECE", "#FF9E4A", "#67BF5C", "#ED665D", "#AD8BC9",
@@ -225,15 +224,39 @@ pal <- c(
 )
 
 plot_bank <- lapply(spe_list, function(x) {
-    plotSpots(x, annotate = sprintf("%s_smooth", cnm), size = 0.8, pal = pal) +
-        theme(legend.position = "none") +
-        labs(title = "BANKSY clusters")
+    df <- cbind.data.frame(
+        clust=colData(x)[[sprintf("%s_smooth", cnm)]], spatialCoords(x))
+    ggplot(df, aes(x=pxl_row_in_fullres, y=pxl_col_in_fullres, col=clust)) +
+        geom_point(size = 0.5) + 
+        scale_color_manual(values = pal) +
+        theme_classic() + 
+        theme(
+            legend.position = "none",
+            axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            axis.ticks=element_blank(),
+            axis.title.x=element_blank(),
+            axis.title.y=element_blank()) +
+        labs(title = "BANKSY clusters") +
+        coord_equal()
 })
 
 plot_anno <- lapply(spe_list, function(x) {
-    plotSpots(x, annotate = "clust_annotation", size = 0.8, pal = pal) +
-        theme(legend.position = "none") +
-        labs(title = sprintf("Sample %s", x$sample_id[1]))
+    df <- cbind.data.frame(
+        clust=colData(x)[['clust_annotation']], spatialCoords(x))
+    ggplot(df, aes(x=pxl_row_in_fullres, y=pxl_col_in_fullres, col=clust)) +
+        geom_point(size = 0.5) + 
+        scale_color_manual(values = pal) +
+        theme_classic() + 
+        theme(
+            legend.position = "none",
+            axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            axis.ticks=element_blank(),
+            axis.title.x=element_blank(),
+            axis.title.y=element_blank()) +
+        labs(title = sprintf("Sample %s", x$sample_id[1])) +
+        coord_equal()
 })
 
 plot_list <- c(plot_anno, plot_bank)

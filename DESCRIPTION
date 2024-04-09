@@ -1,6 +1,6 @@
 Package: Banksy
 Title: Spatial transcriptomic clustering
-Version: 0.99.9
+Version: 0.99.10
 Authors@R: c(
     person(given = "Vipul",
            family = "Singhal",
@@ -51,7 +51,6 @@ Suggests:
     scran,
     cowplot,
     ggplot2,
-    ggspavis,
     testthat (>= 3.0.0),
     harmony,
     Seurat,

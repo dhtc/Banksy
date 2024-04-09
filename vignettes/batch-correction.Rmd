@@ -38,7 +38,6 @@ library(harmony)
 library(scater)
 library(cowplot)
 library(ggplot2)
-library(ggspavis)
 
 SEED <- 1000
 ```
@@ -204,9 +203,21 @@ cnm <- clusterNames(spe)[2]
 spatial_plots <- lapply(sample_names, function(snm) {
     x <- spe[, spe$sample_id == snm]
     ari <- aricode::ARI(x$clust_annotation, colData(x)[, cnm])
-    plotSpots(x, annotate = cnm, pal = pals::kelly()[-1], size = 0.5) +
-        theme(legend.position = "none", plot.title = element_text(size = 10)) +
-        labs(title = sprintf("Sample %s - ARI: %s", snm, round(ari, 3)))
+    
+    df <- cbind.data.frame(clust=colData(x)[[cnm]], spatialCoords(x))
+    ggplot(df, aes(x=sdimy, y=sdimx, col=clust)) +
+        geom_point(size = 0.5) + 
+        scale_color_manual(values = pals::kelly()[-1]) +
+        theme_classic() + 
+        theme(
+            legend.position = "none",
+            axis.text.x=element_blank(),
+            axis.text.y=element_blank(),
+            axis.ticks=element_blank(),
+            axis.title.x=element_blank(),
+            axis.title.y=element_blank()) +
+        labs(title = sprintf("Sample %s - ARI: %s", snm, round(ari, 3))) +
+        coord_equal()
 })
 
 plot_grid(plotlist = spatial_plots, ncol = 3, byrow = FALSE)

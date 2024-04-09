@@ -62,7 +62,7 @@ remotes::install_github("prabhakarlab/Banksy")
 To use the legacy version of *Banksy* utilising the `BanksyObject` class, use
 
 ```{r, eval=F}
-remotes::install_github("prabhakarlab/Banksy@main")
+remotes::install_github("prabhakarlab/Banksy@legacy")
 ```
 
 *Banksy* is also interoperable with [*Seurat*](https://satijalab.org/seurat/) 

@@ -51,7 +51,7 @@ To use the legacy version of *Banksy* utilising the `BanksyObject`
 class, use
 
 ``` r
-remotes::install_github("prabhakarlab/Banksy@main")
+remotes::install_github("prabhakarlab/Banksy@legacy")
 ```
 
 *Banksy* is also interoperable with
@@ -221,7 +221,7 @@ plot_grid(
 Runtime for analysis
 </summary>
 
-    #> Time difference of 57.72235 secs
+    #> Time difference of 55.9195 secs
 
 </details>
 <details>
@@ -240,7 +240,7 @@ sessionInfo()
 #> LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 #> 
 #> locale:
-#> [1] C/en_US.UTF-8/C/C/C/C
+#> [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 #> 
 #> time zone: Europe/London
 #> tzcode source: internal

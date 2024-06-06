@@ -122,6 +122,12 @@ $\mathcal{G}$ are `k_geom[1]=15` and `k_geom[2]=30` respectively. We run
 *BANKSY* at `lambda=0` corresponding to non-spatial clustering, and
 `lambda=0.2` corresponding to *BANKSY* for cell-typing.
 
+> **An important note about choosing the `lambda` parameter for the older [Visium v1 / v2 55um datasets](https://doi.org/10.1038/s41593-020-00787-0) or the original [ST 100um technology](https://doi.org/10.1038/s41596-018-0045-2):**
+>
+> For most modern high resolution technologies like Xenium, Visium HD, StereoSeq, MERFISH, STARmap PLUS, SeqFISH+, SlideSeq v2, and CosMx (and others), we recommend the usual defults for `lambda`: For cell typing, use `lambda = 0.2` (as shown in this quick start, or in [this vignette](https://prabhakarlab.github.io/Banksy/articles/parameter-selection.html)) and [domain segmentation](https://prabhakarlab.github.io/Banksy/articles/domain-segment.html), use `lambda = 0.8`. These technologies are either single cell (imaging based, with segmentation), or have barcoded spots (sequencing based) on the scale of single cells, and we find that the usual defaults work well at this measurement resolution. 
+>
+> However, for the older **Visium v1/v2** or **ST** technologies, with their much lower resolution spots (55um and 100um diameter respectively), each spot already contains the average transcriptome of several cells. We find that `lambda = 0.2`, and not 0.8, shares the appropriate amount of information between each spot and its neighbours, and generally leads to good peerformance for domain segmentation for these technologies. For example, in the [Visium DLPFC dataset](https://prabhakarlab.github.io/Banksy/articles/multi-sample.html). Because each spot can have multiple cells of different types for these low resolution technologies, cell-typing is not defined for them. 
+
 ``` r
 lambda <- c(0, 0.2)
 k_geom <- c(15, 30)

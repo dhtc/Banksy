@@ -48,7 +48,7 @@ library(spatialLIBD)
 library(ExperimentHub)
 
 ehub <- ExperimentHub::ExperimentHub()
-spe <- fetch_data(type = "spe", eh = ehub)
+spe <- spatialLIBD::fetch_data(type = "spe", eh = ehub)
 
 ```
 
